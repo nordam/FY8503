@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage{url}
+\usepackage[margin=1.2in]{geometry}
+\usepackage[subtle]{savetrees}
+\title{FY8503 -- Advanced theoretical physics\\[5pt]
+\large Transport modelling with Stochastic Differential Equations}
+\author{Course plan and literature, Autumn 2023}
+\date{Tor Nordam\\\texttt{tor.nordam@ntnu.no}}
+
+\begin{document}
+\maketitle
+
+
+This course will cover stochastic transport models, as applied within many fields in the natural sciences. The main focus will be on numerical methods and application, though the course will also cover some necessary background in the theory of stochastic differential equations (SDEs). The main motivation for the course is the use of Lagrangian stochastic transport models in the oceanic and atmospheric sciences, although there are also many other applications. Relevant examples will be presented throughout.
+
+We will investigate numerically the correspondence between solutions of the diffusion PDE, and numerical solutions based on SDEs (random walks). Random flight methods, where the velocity is described by the Ornstein-Uhlenbeck process will also be covered. We will look at order of convergence for numerical solutions of SDEs (strong and weak), and conditions that must be satisfied for the different numerical methods, and investigate these points numerically.
+
+The exam will be a multi-day home exam where the students will write code, run simulations, and present their results in a report or a poster or similar (to be decided). Teaching will be a combination of lectures and group seminars. Numerical examples will be presented mainly in Python, but students may use any programming language they prefer.
+
+\section{Tentative course plan}
+
+\begin{itemize}
+    \item[{\bf Week 1}]  {\bf Random walk, the Wiener process.} Link between random walk and diffusion. Mean square displacement grows linearly in time. Wiener process as a continuous generalisation of random walk. Modelling the Wiener process.
+    \item[{\bf Week 2}]  {\bf Stochastic differential equations (SDEs).} SDE for diffusion. Other simple examples. Analytical solutions.
+    \item[{\bf Week 3}]  {\bf Numerical methods for SDEs.} Sketch of derivation of Euler-Maruyama and 1st-order Milstein. Numerical examples.
+    \item[{\bf Week 4}]  {\bf Convergence in the strong and weak senses.} Repetition of the Wiener process. Numerical investigations of convergence in the strong and weak senses.
+    \item[{\bf Week 5}]  {\bf Numerical methods for SDEs, continued.} Higher-order methods (1st and 2nd order Milstein, 1.5 and 2nd order strong Taylor). Derivative-free methods.
+    \item[{\bf Week 6}]  {\bf The Fokker-Planck equation, an SDE for advection-diffusion.} Link between the Wiener process and diffusion. The Fokker-Planck equation more generally. The advection-diffusion equation for spatially variable diffusion. Reconstructing probability distribution from discrete samples. The well-mixed condition.
+    \item[{\bf Week 7}]  {\bf The Chapman-Kolmogorov equation, reflecting boundary conditions for SDEs.} Chapman-Kolmogorov for discrete time-evolution of probability distribution. Implementing reflecting boundary conditions in the SDE for diffusion. Using Chapman-Kolmogorov to study implementations of boundary conditions.
+    \item[{\bf Week 8}]  {\bf Boundary conditions continued.} Reflecting boundary conditions. Mixed boundary conditions (zero diffusive flux, non-zero advective flux). Comparisons with different boundary conditions for direct numerical solution of the advection-diffusion equation.
+    \item[{\bf Week 9}]  {\bf The Ornstein-Uhlenbeck process, the Gillespie algorithm.} Random flight as an extension of random walk in the short-time limit. Gillespie's method for drawing samples from the Ornstein-Uhlenbeck process without modelling the intermediate timesteps. Other applications of Gillespie (\emph{e.g.}, in chemical reactions).
+    \item[{\bf Week 10}] {\bf The Burgers equation.} Modelling the viscous Burgers equation with a Lagrangian stochastic particle method. Comparison to numerical solution of the viscous Burgers PDE.
+    \item[{\bf Week 11}] {\bf The advection-diffusion-reaction equation with SDEs.} Incorporating reaction terms into a Lagrangian stochastic particle model. Smoluchowski's coagulation equation.
+    \item[{\bf Week 12}] {\bf Example application: Cosmic rays in the galactic magnetic field.}
+    \item[{\bf Week 13}] {\bf Example application: Transport of microplastics in the ocean.}
+    \item[{\bf Week 14}] {\bf Example application: Droplet growth in clouds.}
+\end{itemize}
+
+\section{Literature}
+
+\subsection{Books}
+
+\begin{itemize}
+    \item Kloeden \& Platen, \emph{Numerical Solution of Stochastic Differential Equations}, Springer, 1999. \\
+\url{https://link.springer.com/book/10.1007/978-3-662-12616-5}
+    \begin{itemize}
+        \item {\bf Chapters 1 and 2:} Selected parts to introduce basics of stochastic processes and the Wiener process. Fokker-Planck and Chapman-Kolmogorov equations.
+        \item {\bf Chapter 3:} Introduction to stochastic integrals, Itô calculus.
+        \item {\bf Chapter 4:} Introduction to stochastic differential equations, with examples of analytical solutions. Strong and weak solutions.
+        \item {\bf Chapter 5:} Stochastic Taylor expansion. Sketch of derivation of numerical methods.
+        \item {\bf Chapter 10:} Numerical methods. Euler-Maruyama, Milstein, Strong Taylor (orders 1.5 and 2.0). Convergence in the strong sense.
+        \item {\bf Chapter 11:} Derivative-free strong schemes.
+        \item {\bf Chapter 14:} Weak numerical methods. Convergence in the weak sense.
+        \item {\bf Chapter 15:} Derivative-free weak numerical methods.
+    \end{itemize}
+
+\item Gustafsson, \emph{High Order Difference Methods for Time Dependent PDE}, Springer, 2008. \\
+    \url{https://link.springer.com/book/10.1007/978-3-540-74993-6}
+        \begin{itemize}
+            \item {\bf Chapter 11:} The viscous Burgers equation.
+        \end{itemize}
+
+        \subsection{Papers}
+
+\item Du Toit Strauss \& Effenberger, ``A Hitch-hiker's Guide to Stochastic Differential Equations'', \emph{Space Science Reviews}, vol. 212, pp.~151--192, 2017. \\
+    \url{https://link.springer.com/article/10.1007/s11214-017-0351-y}
+
+\item Gillespie, ``Exact numerical simulation of the Ornstein-Uhlenbeck process and it's integral'', \emph{Physical Review E}, vol. 52, pp.~2084--2091, 1996.\\
+    \url{https://journals.aps.org/pre/abstract/10.1103/PhysRevE.54.2084}
+
+\item Gillespie, ``The mathematics of Brownian motion and Johnson noise'', \emph{American Journal of Physics}, vol. 62, pp.~225--240, 1996.\\
+    \url{https://aapt.scitation.org/doi/pdf/10.1119/1.18210}
+
+\item Gräwe, Deleersnijder, Shah \& Heemink, ``Why the Euler scheme in particle tracking is not enough: the shallow-sea pycnocline test case'', \emph{Ocean Dynamics} vol. 62, pp.~501--514, 2012. \\
+\url{https://link.springer.com/article/10.1007/s10236-012-0523-y}
+
+\item Lépingle, ``Euler scheme for reflected stochastic differential equations'', \emph{Mathematics and Computers in Simulation} vol. 38, pp.~119--126, 1995.
+
+\item van Sebille, Griffies, Abernathey, et al., ``Lagrangian ocean analysis: Fundamentals and methods'', \emph{Ocean Modelling}, vol. 121, pp.~49--75, 2018. \\
+    \url{https://www.sciencedirect.com/science/article/pii/S1463500317301853}
+
+\item Wetherill, `` Comparison of analytical and physical modeling of planetesimal accumulation'', \emph{Icarus}, vol. 88, pp.~336--354, 1990. \\
+    \url{https://www.sciencedirect.com/science/article/abs/pii/001910359090086O}
+
+\item Wilson \& Flesch, ``Flow boundaries in random-flight dispersion models: enforcing the well-mixed condition'', \emph{Journal of Applied Meteorology and Climatology}, vol.~32, pp.~1695--1707, 1993.
+\end{itemize}
+
+\section{Recommended background}
+\begin{itemize}
+    \item General MSc-level background in physics and mathematics
+    \item General background in computational / numerical physics (\emph{e.g.}, TFY4235/FY8904)
+    \item Some experience with numerical ODE and PDE methods
+\end{itemize}
+\end{document}
