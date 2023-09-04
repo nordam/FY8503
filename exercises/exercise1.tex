@@ -1,0 +1,38 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=1.2in]{geometry}
+
+\title{\vspace{-3em} Exercise 1\\[10pt] \large FY8503 Advanced theoretical physics\\  Transport modelling with Stochastic differential equations}
+
+\author{September 11, 2023}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+There was a question at the first lecture about what happens if you construct a stochastic process with non-Gaussian increments. We will investigate this question in this exercise, by generating realisations of a random process, $X_t$, by adding increments from a non-Gaussian distribution with mean $\mu=0$ and variance $\sigma^2 < \infty$. Try the different tasks below with different distributions, for example:
+\begin{itemize}
+    \item Maxwell distribution
+    \item Weibull distribution
+    \item Laplace distribution
+    \item Some discrete distribution (for example $X\in\{-a, 0, a\}$ with suitably selected probabilities)
+    \item Some non-symmetric discrete distribution (for example $X\in\{-a, 0, 2a\}$ with suitably selected probabilities)
+\end{itemize}
+
+We will use the notation that $X_n$ is the numerical value of the process at time $t_n = n \Delta t$, and that the smallest increments (which we use to construct the numerical realisation of the process) are called $\Delta X_n = X_n - X_{n-1}$.
+
+\subsubsection*{Task a}
+
+Generate a single numerical approximation, $X_t$, of a stochastic process by starting at zero.
+Construct the process from $t=0$ to $t=T$, by adding $N_t = T/\Delta t$ increments with $\mu=0$ and variance $\sigma^2 = \Delta t$. Plot the resulting process. Keep $T$ constant, but change $\Delta t$, and try observe how the process changes.
+
+\subsubsection*{Task b}
+
+Investigate the distribution of the increments. Clearly, the increments of two neighbouring points, \emph{e.g.}, $X_n - X_{n-1}$ are the same increments that the process was constructed from. But how about other increments, such as $X_n - X_{n-10}$ or $X_n - X_{n-100}$? Plot the distribution of the increments for a few different intervals. Use sufficiently many realisations that you get a nice and smooth histogram of the distribution. Is this distribution the same as the distribution you started out with for the smallest increments?
+
+Investigate this using a few different distributions to construct the stochastic process. Note that you must choose the distribution such that it has $\mu=0$ and $\sigma^2=\Delta t$. This is possible even for non-symmetric discrete distributions with only two or three different outcomes, if you choose the values and the probabilities correctly.
+
+
+
+\end{document}
