@@ -25,3 +25,8 @@ https://global.oup.com/academic/product/first-steps-in-random-walks-978019875409
 #### Brzeźniak Z. and Zastawniak, T., _Basic Stochastic Processes_, Springer, 2012.
 
 https://link.springer.com/book/10.1007/978-1-4471-0533-6
+
+#### Chandrashekhar, S., "Stochastic Problems in Physics and Astronomy", _Reviews of Modern Physics_ vol. 15, no. 1, pp. 1--89, 1943.
+
+https://doi.org/10.1103/RevModPhys.15.1
+https://facultystaff.richmond.edu/~olipan/Chandrashekhar.pdf
