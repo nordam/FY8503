@@ -1,0 +1,61 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage[margin=1.2in]{geometry}
+
+\title{\vspace{-3em} Exercise 2\\[10pt] \large FY8503 Advanced theoretical physics\\  Transport modelling with Stochastic differential equations}
+
+\author{September 18, 2023}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+Implement the Euler-Maruyama method, and use it to solve the simplest SDE from the last lecture:
+\begin{align}
+    \label{eq:}
+    \mathrm{d} X_t = a \, \mathrm{d}t + b \, \mathrm{d}W_t,
+\end{align}
+where the drift and diffusion terms, $a$ and $b$, are constants.
+
+As this is just the Wiener process scaled by a constant $b$ and shifted by an amount $at$, we can see that the distribution of a large number of realisations $X_t$, at time $t$, will follow a Gaussian distribution with some mean $\mu$ and variance $\sigma^2$.
+
+\subsubsection*{Task a}
+Solve for a large number of realisations, and plot a histogram of values of $X_t$ together with the expected Gaussian distribution, for a few different times, $t$.
+
+\subsubsection*{Task b}
+A more rigorous way (than visually comparing the expected distribution to a histogram) to look at the convergence to a distribution is perhaps to look at the moments of the distribution, for example the mean (first moment) or the variance (central second moment).
+
+Solve the same equation for $N_p$ realisations and a timestep $\Delta t$, and compare the mean and variance of the distribution of solutions to the mean and variance of the expected Gaussian distribution. Try different values of $N_p$, and different values of $\Delta t$. Do you observe any trends?
+
+\section*{Problem 2}
+
+Use the Euler-Maruyama method to solve the other SDE we looked at in the last lecture:
+\begin{align}
+    \label{eq:}
+    \mathrm{d} X_t = a X_t \, \mathrm{d}t + b X_t \, \mathrm{d}W_t,
+\end{align}
+where the drift and diffusion terms, $a X_t$ and $b X_t$, are now proportional to $X_t$. We recall from the lecture (see also Øksendal, 2003, p. 67) that the expectation value of the solution is 
+
+\begin{align}
+    \label{eq:}
+     E(X_t) = \left\langle X_t \right\rangle = X_0  \mathrm{e}^{at},
+\end{align}
+where $X_0$ is the initial value at $t=0$.
+
+
+\subsubsection*{Task a}
+
+Solve the equation for $N_p$ realisations and a timestep $\Delta t$, and compare the mean of the distribution of solutions to the expectation value. Try this for different values of $N_p$, and different values of $\Delta t$. Do you observe any trends?
+
+\subsubsection*{Task b}
+
+If you want, you can try to compare the distribution of the numerical solutions to the expected distribution, which is log-normal (which means that $\log(X_t)$ is normally distributed). You can read about geometric Brownian motion, for example at Wikipedia, and try to compare against the distribution described there. Note that the Wikipedia page uses a little different notation.
+
+
+
+
+
+
+\end{document}
