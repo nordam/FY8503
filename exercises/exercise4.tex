@@ -1,0 +1,52 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[margin=1.2in]{geometry}
+
+\title{\vspace{-3em} Exercise 4\\[10pt] \large FY8503 Advanced theoretical physics\\  Transport modelling with Stochastic differential equations}
+
+\author{October 3, 2023}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+
+\section*{Problem 1}
+
+Here we will again look at a version of the Duffing-van der Pol oscillator, and try some calculations as described on pages 222--225 in Kloeden, Platen \& Schurz. The oscillator is described by two coupled SDEs:
+\begin{align}
+    \label{eq:vdp}
+\mathrm{d}X &= V\, \mathrm{d}t \\
+\mathrm{d}V &= \big(X(\alpha-X^2) - V\big) \mathrm{d}t + \sigma X \, \mathrm{d}W_t,
+\end{align}
+where $\alpha$ and $\sigma$ are constants. We can equivalently write this as a vector-valued SDE with scalar noise:
+
+\begin{align}
+    \label{eq:vdp2}
+\left(\begin{array}{c}\mathrm{d}X\\\mathrm{d}V\end{array}\right) = \left(\begin{array}{c}V\\ \big(X(\alpha-X^2) - V\big) \end{array}\right) \mathrm{d}t + \left(\begin{array}{c} 0 \\ \sigma X \end{array}\right) \mathrm{d}W_t.
+\end{align}
+
+
+
+\subsubsection*{Task a}
+
+Repeat Problem 2, Task B from Exercise 3, but solving Eq.~\eqref{eq:vdp2} with the order 1.5 strong Itô-Taylor scheme for scalar noise. See Eq.~4.5 on page 353 of Kloeden \& Platen, and see page 339 for the definitions of $L^0$ and $L^1$. You can choose if you want to try to implement a fully general version of the scheme, or if you prefer to implement the scheme specifically for Eq.~\eqref{eq:vdp2}.
+
+
+\subsection*{References}
+
+Kloeden, Platen \& Schurz, 1997, \emph{Numerical Solution of SDE Through Computer Experiments}, Springer-Verlag, Berlin, Heidelberg, corrected second printing.
+\url{https://link.springer.com/book/10.1007/978-3-642-57913-4}
+
+
+Kloeden \& Platen, 1992, \emph{Numerical Solution of Stochastic Differential Equations}, Springer-Verlag, Berlin, Heidelberg.
+\url{https://link.springer.com/book/10.1007/978-3-662-12616-5}
+
+
+
+
+
+\end{document}
