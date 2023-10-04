@@ -1,0 +1,44 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[margin=1.2in]{geometry}
+
+\title{\vspace{-3em} Exercise 5\\[10pt] \large FY8503 Advanced theoretical physics\\  Transport modelling with Stochastic differential equations}
+
+\author{October 9, 2023}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+
+\section*{Problem 1}
+
+In this exercise, we will consider the concentration (density) of diffusing particles. The diffusion equation (for constant diffusivity) is given by
+
+\begin{align}
+    \label{eq:diff}
+    \frac{\partial p}{\partial t} = K \frac{\partial^2 p}{\partial x^2}.
+\end{align}
+
+
+\subsubsection*{Task a}
+
+Find the SDE corresponding to Eq.~\eqref{eq:diff}.
+
+\subsubsection*{Task b}
+
+Implement a solver for the SDE found above, with a reflecting boundary at $x=0$. Solve the SDE for a large number of particles, all starting out at some position $x_0 > 0$. Choose suitable values for $K$, $x_0$ and the integration time, such that you can clearly see the effect of the reflecting boundary.
+
+Compare the density of particle positions to the analytical solution of Eq.~\eqref{eq:diff}, which in this case is a sum of two Gaussians, both with variance $\sigma^2=2Kt$, and with means $\mu_+ = x_0$ and $\mu_- = -x_0$. Note that using two Gaussians, symmetrically placed about the reflecting boundary in this way is the same idea as the use of ``image charges'' in electrostatics.
+
+\subsubsection*{Task c}
+
+Repeat the problem above, but now with an absorbing boundary at $x=0$. In this case, the analytical solution is a difference of two Gaussians, instead of the sum.
+
+
+
+
+\end{document}
