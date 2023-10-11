@@ -1,0 +1,64 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[margin=1.2in]{geometry}
+
+\title{\vspace{-3em} Exercise 6\\[10pt] \large FY8503 Advanced theoretical physics\\  Transport modelling with Stochastic differential equations}
+
+\author{October 16, 2023}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+
+\section*{Problem 1}
+
+In this exercise, we will consider the ``well-mixed condition'' for a diffusion problem with variable diffusivity and reflecting boundaries.
+The diffusion equation for variable diffusivity is
+
+\begin{align}
+    \label{eq:diff}
+    \frac{\partial p}{\partial t} = \frac{\partial }{\partial x} \left( K(x) \frac{\partial p}{\partial x}\right).
+\end{align}
+
+The well-mixed condition says that if the density is uniform ($p=\mathrm{const}$), then the density should remain uniform, since $\frac{\partial p}{\partial x}=0 \Rightarrow \frac{\partial p}{\partial t}=0$. If an SDE model is to be equivalent with solving the diffusion PDE, then it must of course also satisfy this condition.
+
+
+\subsubsection*{Task a}
+
+Find the SDE corresponding to Eq.~\eqref{eq:diff}.
+
+
+\subsubsection*{Task b}
+
+Implement a solver for the SDE found above, with a reflecting boundaries at $x=0$ and $x=1$. Solve the SDE for a large number of particles, with initial uniform distribution between 0 and 1. Try with constant diffusivity, and with variable diffusivity $K(x) = K_0 + x K_1 $, for some suitable values of $K_0$ and $K_1$. Run the model for sufficiently long time $t$ to reach a ``steady state'' distribution (up to random fluctuations).
+
+Ways of identifying the steady state can for example be to plot average particle position as a function of time, or to create a histogram of particle positions and take the RMS error relative to the theoretical uniform distribution, and plot this as a function of time.
+
+
+\subsubsection*{Task c}
+
+With the linear diffusivity, run the simulation until steady state for a few different timesteps. Plot the error in the steady-state average particle position as a function of timestep.
+
+
+\subsubsection*{Task d}
+
+Modify the diffusivity to make the derivative of the diffusivity zero at the boundary at $x=0$. For example like this:
+
+\begin{align}
+    \label{eq:K}
+    K(x) = \left\{ \begin{array}{ccc} K_0 + x K_1 & \mathrm{if} &  x \geq h, \\
+    K_0 + \frac{K_1}{2} \left(h + \frac{x^2}{h}\right) & \mathrm{if} & x < h. \end{array} \right.
+\end{align}
+
+Run the simulation until steady state with different timesteps, like in Task c, and see if the modified diffusivity makes a difference.
+
+You can also try other modifications if you prefer, just make sure that $K(x) > 0$ everywhere, and that $\partial K/\partial x$ is continuous.
+
+
+
+
+\end{document}
