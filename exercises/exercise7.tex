@@ -1,0 +1,70 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[margin=1.2in]{geometry}
+
+\title{\vspace{-3em} Exercise 7\\[10pt] \large FY8503 Advanced theoretical physics\\  Transport modelling with Stochastic differential equations}
+
+\author{November 6, 2023}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+
+\section*{Problem 1}
+
+In this exercise, we will look at an alternative way of modelling the Ornstein-Uhlenbeck process, described in Gillespie (1996). Equation (1.2) in Gillespie,
+\begin{align}
+    \label{eq:ou}
+    X(t + dt) = X(t) - \frac{1}{\tau} X(t) dt + c^{1/2} dW(t),
+\end{align}
+is the equation for the Ornstein-Uhlenbeck process.
+
+In the lecture on the 23rd of October we looked at what I called a random flight model:
+\begin{subequations}
+\begin{align}
+    \label{eq:rf_v}
+    \mathrm{d} v &= - \frac{1}{\tau}v \; \mathrm{d} t +  \sqrt{\frac{2\sigma^2}{\tau}} \, \mathrm{d} W_t \\
+    \label{eq:rf_x}
+    \mathrm{d} x &= v \, \mathrm{d} t.
+\end{align}
+\end{subequations}
+
+We see that Eq.~\eqref{eq:ou} and~\eqref{eq:rf_v} are the same, just written in slightly different ways. What Gillespie calls ``the integral of the Ornstein-Uhlenbeck process'' is the same as Eq.~\eqref{eq:rf_x}, which we called the position in the random flight model (position is found by integrating the velocity over time).
+
+In the lecture, I pointed out that we need to use $\Delta t \ll \tau$ if we are to model this process accurately with a numerical SDE method. The point of Gillespie's paper is to come up with an algorithm for modelling this process that can allow us to use much longer timesteps, and still get the correct distribution and development in time.
+
+
+\subsection*{Task a}
+
+Use an SDE solver to solve the two coupled SDEs given by Eq.~\eqref{eq:rf_v} and~\eqref{eq:rf_x} for a large number of realisations. We saw in the lecture on the Fokker-Planck equation that the distribution of solutions of the Ornstein-Ulenbeck process starting from a single initial value is a Gaussian distribution with analytically known mean and variance (you can also find the expressions on Wikipedia or in Gillespie (1996)). Compare the distribution of the numerical solutions to the analytical expressions. How do the results change if you make $\Delta t$ equal to $\tau$, or larger?
+
+
+\subsection*{Task b}
+
+Implement Gillespie's method for drawing samples from the Ornstein-Uhlenbeck process. The relevant expressions are given by Eqs.~(3.5a) and~(3.5b) in Gillespie (1996), though you will have to read at least some of the surrounding text to work out the details needed for implementation.
+
+Use this approach to simulate a large number of realisations of the Ornstein-Ulenbeck process. Compare the results to the analytically known distribution, as above.
+
+
+\subsection*{Task c}
+
+It is worth pointing out that the method of Gillespie is more advanced than just drawing samples from the correct distribution, which we could also imagine doing since the distribution at different times is known when the initial condition is known. The difference is that with Gillespie's method we take the previous value of the process into account, so that it is actually samples from a process with a consistent history, rather than just uncorrelated random variables from the correct distributions.
+
+
+To see the difference, try the following:
+\begin{itemize}
+    \item Generate a realisation of the Ornstein-Uhlenbeck process for $t\in[0, T]$ with Gillespie's method. Let $T \gg \tau$ and $\Delta t \ll \tau$. Calculate the autocorrelation of this realisation (see for example \texttt{numpy.correlate}).
+    \item For the same times as above, draw samples from the known Gaussian distribution at each time. Calculate the autocorrelation of this realisation as well.
+\end{itemize}
+What were the results? What results did you expect?
+
+
+\section*{References}
+
+Gillespie, D.T (1996). ``Exact numerical simulation of the Ornstein-Uhlenbeck process and its integral'', \emph{Physical Review E}, vol. 54, no. 2, pp. 2084--2091. \url{https://doi.org/10.1103/PhysRevE.54.2084}
+
+\end{document}
