@@ -1,0 +1,33 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[margin=1.2in]{geometry}
+
+\title{\vspace{-3em} Exercise 8\\[10pt] \large FY8503 Advanced theoretical physics\\  Transport modelling with Stochastic differential equations}
+
+\author{November 11, 2023}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+
+\section*{Problem 1}
+
+In this exercise, we will look at the Gillespie algorithm and the coagulation equation, both of which were presented and implemented in the previous lecture (notebook 10 in the github repo).
+
+\subsection*{Task a}
+
+The implementation of the coagulation equation presented in the lecture used a double for loop to check all particle pairs for coagulation events during a timestep. For such an approach, the simulation run time will scale as $N_p^2$, where $N_p$ is the number of particles, which is not very practical. The task is to try rather to write an implementation of a solver for this equation that makes use of Gillespies method.
+
+It may be useful to recall that with a constant kernel function, all pairs of particles are equally likely to collide, which simplifies the implementation somewhat.
+
+
+\section*{References}
+
+Gillespie, D. T. (2007). ``Stochastic simulation of chemical kinetics''. \emph{Annual Review of Physical Chemistry}, 58, 35-55. \url{https://doi.org/10.1146/annurev.physchem.58.032806.104637}
+
+
+\end{document}
